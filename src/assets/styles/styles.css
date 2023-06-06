@@ -4,7 +4,7 @@
   position: relative;
   min-width: 1920px;
   margin: 0 auto;
-  min-height: 70vh;
+  min-height: 700px;
 }
 .section-main::after, .section-main::before {
   height: 764px;
@@ -170,13 +170,13 @@
   font-weight: 600;
   font-size: 100px;
   line-height: 100px;
+  margin-bottom: 26px;
 }
 .description-subtitle {
   font-weight: 400;
   font-size: 18px;
   line-height: 27px;
   color: #a9c7c7;
-  margin-top: 26px;
 }
 .description-button {
   background: #8856d9;
@@ -196,6 +196,85 @@
   background: #9468da;
 }
 .description-button:active {
+  background: #6039a0;
+}
+
+.editions-list {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 350px);
+  -moz-column-gap: 16px;
+       column-gap: 16px;
+  justify-content: center;
+}
+.editions-item {
+  background: linear-gradient(180deg, #141615 0%, #1C2023 100%);
+  border-radius: 6px;
+  padding: 17px;
+  transition: transform 0.25s ease-in-out;
+  transform: translateX(0);
+}
+.editions-item__img {
+  border-radius: 6px;
+  overflow: hidden;
+  width: 100%;
+  height: 172px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.editions-item__title {
+  margin-top: 20px;
+  font-weight: 700;
+  line-height: 19px;
+  text-align: center;
+}
+.editions-item__subtitle {
+  color: #a9c7c7;
+  font-weight: 500;
+  text-align: center;
+  line-height: 19px;
+  margin: 10px 0 32px 0;
+}
+.editions-item__decription {
+  text-align: left;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  color: #8c96a0;
+}
+.editions-item__price {
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 23px;
+  color: #fff;
+  margin: 6px 0 14px 0;
+  text-align: right;
+}
+.editions-item__btn {
+  background: #8856d9;
+  border-radius: 6px;
+  padding: 12px 36px;
+  font-weight: 500;
+  line-height: 19px;
+  color: #fff;
+  width: -moz-max-content;
+  width: max-content;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background 0.25s;
+  padding: 8px 18px;
+  font-size: 13px;
+  line-height: 15px;
+  margin-left: auto;
+}
+.editions-item__btn:hover {
+  background: #9468da;
+}
+.editions-item__btn:active {
   background: #6039a0;
 }
 

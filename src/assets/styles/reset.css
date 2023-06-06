@@ -55,4 +55,14 @@ ul, li {
 .flex-center {
   align-items: center;
   justify-content: center;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 47px;
+  color: #fff;
+  text-align: center;
+  opacity: 1;
+  transition: opacity 0.5s;
 }/*# sourceMappingURL=reset.css.map */
