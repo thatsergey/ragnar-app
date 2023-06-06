@@ -1,0 +1,211 @@
+@import '../styles/colors.css';
+.section-main {
+  padding-top: 40px;
+  position: relative;
+  min-width: 1920px;
+  margin: 0 auto;
+  min-height: 70vh;
+}
+.section-main::after, .section-main::before {
+  height: 764px;
+  width: 1363px;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+}
+.section-main::after {
+  background-image: url("../images/snow.gif");
+  opacity: 0.1;
+}
+.section-main::before {
+  background-image: url("../images/bg.png");
+}
+
+.header {
+  align-items: center;
+}
+.header-menu {
+  align-items: center;
+}
+.header-menu__button {
+  width: 25px;
+  height: 16px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  transition: width 0.25s;
+}
+.header-menu__button span {
+  width: 25px;
+  height: 2px;
+  background: #fff;
+  position: relative;
+  display: block;
+}
+.header-menu__button span::after, .header-menu__button span::before {
+  display: block;
+  content: "";
+  width: 12px;
+  height: 2px;
+  background: #fff;
+  position: absolute;
+  transition: width 0.25s;
+}
+.header-menu__button span::after {
+  top: 5px;
+}
+.header-menu__button span::before {
+  top: 10px;
+  width: 25px;
+}
+.header-menu__list {
+  margin-left: 50px;
+  z-index: -1;
+}
+.header-menu__list ul {
+  -moz-column-gap: 24px;
+       column-gap: 24px;
+  font-weight: 400;
+  line-height: 17px;
+  text-transform: uppercase;
+  transform: translateX(-200px);
+  opacity: 0;
+}
+.header-menu__link {
+  position: relative;
+  color: rgba(255, 255, 255, 0.25);
+  transition: color 0.25s;
+}
+.header-menu__link:hover {
+  color: #8856d9;
+}
+.header-menu__link.lang {
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+.header-menu__link.lang:hover .header-menu__languages {
+  display: block;
+}
+.header-menu__link.lang svg {
+  width: 12px;
+  height: 12px;
+  fill: #fff;
+  transform: rotate(180deg);
+  margin-left: 9px;
+}
+.header-menu__languages {
+  padding: 10px 15px;
+  border-radius: 6px;
+  background: #30373f;
+  position: absolute;
+  top: 100%;
+  display: none;
+}
+.header-menu__language {
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.25);
+  transition: color 0.25s;
+}
+.header-menu__language:hover {
+  color: #8856d9;
+}
+.header.opened .header-menu__button span {
+  width: 12px;
+}
+.header.opened .header-menu__button span::after {
+  width: 25px;
+}
+.header.opened .header-menu__button span::before {
+  width: 12px;
+}
+.header.opened .header-menu__list {
+  z-index: 1;
+}
+.header.opened .header-menu__list ul {
+  opacity: 1;
+  transform: translateX(0);
+  transition: transform 0.25s, opacity 0.2s;
+}
+.header-timer {
+  margin-left: auto;
+  -moz-column-gap: 19px;
+       column-gap: 19px;
+}
+.header-timer span {
+  font-weight: 400;
+  line-height: 19px;
+  color: #8c96a0;
+}
+.header-timer__values {
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+}
+.header-timer__item {
+  color: #a9c7c7;
+}
+.header-timer__item-value {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 47px;
+  min-width: 55px;
+  text-align: center;
+}
+.header-timer__item-info {
+  text-align: center;
+  font-weight: 400;
+}
+
+.description {
+  margin-top: 7%;
+  max-width: 540px;
+  animation: move 0.3s ease-in-out;
+}
+.description-title h1 {
+  font-weight: 600;
+  font-size: 100px;
+  line-height: 100px;
+}
+.description-subtitle {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  color: #a9c7c7;
+  margin-top: 26px;
+}
+.description-button {
+  background: #8856d9;
+  border-radius: 6px;
+  padding: 12px 36px;
+  font-weight: 500;
+  line-height: 19px;
+  color: #fff;
+  width: -moz-max-content;
+  width: max-content;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background 0.25s;
+  margin-top: 36px;
+}
+.description-button:hover {
+  background: #9468da;
+}
+.description-button:active {
+  background: #6039a0;
+}
+
+@keyframes move {
+  0% {
+    opacity: 0;
+    transform: translateX(-400px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}/*# sourceMappingURL=styles.css.map */
