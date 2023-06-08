@@ -1,6 +1,33 @@
 @import './colors.scss';
 @import './mixins.scss';
 .section {
+    &.hidden{
+        .editions{
+            &-item{
+                transition: transform 0s;
+                transform: translateX(-2000px);
+            }
+        }
+        h2{
+            transition: opacity 0s;
+            opacity: 0;
+        }
+        .dual,
+        .explore-info{
+            transition: column-gap 0s; 
+            column-gap: 250%;
+        }
+
+        .video{
+            transition: transform 0s;
+            transform: scale(0);
+        }
+        .news,
+        .faq-item{
+            transition: transform 0s;
+            transform: translateX(-2000px);
+        }
+    }
     &-main {
         padding-top: 40px;
         position: relative;
@@ -233,6 +260,13 @@
         transition: transform 0.25s ease-in-out;
         transform: translateX(0);
 
+        &:nth-child(2){
+            transition-delay: .25s ;
+        }
+        &:last-child{
+            transition-delay: .5s ;
+        }
+
         &__img{
         border-radius: 6px;
         overflow: hidden;
@@ -341,7 +375,7 @@
 .video{
     position: relative;
     margin-top: 32px;
-    transition: tranform .5s;
+    transition: transform .5s;
     transform: scale(1);
     video{
         width: 100%;
@@ -632,6 +666,12 @@
     &-item{
         transition: transform .4s;
         transform: translate(0);
+        &:nth-child(2){
+           transition-delay: .25s;
+        }
+        &:last-child{
+            transition-delay: .5s;
+        }
 
         &__header{
             width: 100%;
@@ -660,7 +700,7 @@
         &__content{
             height: 0;
             opacity: 0;
-            transition: height .25s opacity .25s;
+            transition: height .25s, opacity .25s;
             p{
               padding-top: 13px; 
               font-weight: 400;

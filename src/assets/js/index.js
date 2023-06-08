@@ -22,6 +22,8 @@ const header = document.querySelector('.header')
 const menuButton = document.querySelector('.header-menu__button');
 const video = document.getElementById('video')
 const videoButton = document.querySelector('.video-btn')
+const faqItem = document.querySelectorAll('.faq-item')
+const sections = document.querySelectorAll('.section')
 
     const toggleMenu = ()=> header.classList.toggle(classes.opened)
     const scrollToSection = (e)=>{
@@ -106,8 +108,26 @@ new Swiper('.swiper',{
     }
 })
 }
+
+const handleFaqItem = ({currentTarget:target})=>{
+    target.classList.toggle(classes.opened)
+    const isOpened = target.classList.contains(classes.opened)
+    const height = target.querySelector('p').clientHeight
+    const content = target.querySelector('.faq-item__content')
+    content.style.height = `${isOpened ? height: 0}px`
+}
+
+const handleScroll =()=>{
+    const { scrollY:y, innerHeight:h } = window
+    sections.forEach((section)=>{
+        if(y > section.offsetTop - h / 1.5) section.classList.remove(classes.hidden)
+    })
+}
+
+window.addEventListener('scroll', handleScroll)
 initSlider()
 videoButton.addEventListener('click',handleVideo)
 menuButton.addEventListener('click',toggleMenu)
 menuLink.forEach((link)=> link.addEventListener('click', scrollToSection))
 checkbox.forEach((box)=> box.addEventListener('click', handleCheckbox))
+faqItem.forEach((item)=>item.addEventListener('click', handleFaqItem))
