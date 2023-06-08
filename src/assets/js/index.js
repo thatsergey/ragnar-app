@@ -1,6 +1,10 @@
+import 'swiper/swiper.min.css'
 import '../styles/reset.scss'
 import '../styles/mixins.scss'
 import '../styles/styles.scss'
+
+import Swiper, {Navigation} from 'swiper'
+Swiper.use([Navigation])
 
 const checkboxes = {
     requirements: ['minimum', 'recommended'],
@@ -75,22 +79,34 @@ const handleVideo = ({target})=>{
 }
 
 const handleCheckbox = ({currentTarget:{checked, name}})=>{
-    console.log(name)
-const {active} = classes
-const value = checkboxes[name][Number(checked)]
-const list = document.getElementById(value)
-console.log(list)
-const tabs = document.querySelectorAll(`[data-${name}]`)
-const siblings = list.parentElement.children;
-
-for(const item of siblings) item.classList.remove(active)
-for(const tab of tabs){
-    tab.classList.remove(active);
-    tab.dataset[name] === value && tab.classList.add(active)
+    const {active} = classes
+    const value = checkboxes[name][Number(checked)]
+    const list = document.getElementById(value)
+    console.log(list)
+    const tabs = document.querySelectorAll(`[data-${name}]`)
+    const siblings = list.parentElement.children;
+    
+    for(const item of siblings) item.classList.remove(active)
+    for(const tab of tabs){
+        tab.classList.remove(active);
+        tab.dataset[name] === value && tab.classList.add(active)
+    }
+    list.classList.add(active)
 }
-list.classList.add(active)
 
+const initSlider = ()=>{
+new Swiper('.swiper',{
+    loop:true,
+    slidesPerView:3,
+    spaceBetween:20,
+    initialSlide:2,
+    navigation:{
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    }
+})
 }
+initSlider()
 videoButton.addEventListener('click',handleVideo)
 menuButton.addEventListener('click',toggleMenu)
 menuLink.forEach((link)=> link.addEventListener('click', scrollToSection))
