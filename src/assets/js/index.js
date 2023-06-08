@@ -4,6 +4,7 @@ import '../styles/mixins.scss'
 import '../styles/styles.scss'
 
 import Swiper, {Navigation} from 'swiper'
+import { languages } from './languages'
 Swiper.use([Navigation])
 
 const checkboxes = {
@@ -16,6 +17,20 @@ const classes = {
     active: 'active',
 }
 let isPlay = false
+const values = [
+    {
+        price: 19.99,
+        title: 'Standart Edition'
+    },
+    {
+        price: 18.99,
+        title: 'Standart Edition'
+    },
+    {
+        price: 29.99,
+        title: 'Deluxe Edition'
+    }
+]
 const checkbox = document.querySelectorAll('.checkbox')
 const menuLink = document.querySelectorAll('.menu-link')
 const header = document.querySelector('.header')
@@ -24,6 +39,13 @@ const video = document.getElementById('video')
 const videoButton = document.querySelector('.video-btn')
 const faqItem = document.querySelectorAll('.faq-item')
 const sections = document.querySelectorAll('.section')
+const language = document.querySelectorAll('.language')
+const buyButton = document.querySelectorAll('.buy-button')
+const overlay = document.querySelector('.overlay')
+const modal = document.querySelector('.modal')
+const modalTitle = document.querySelector('.modal-version')
+const modalPrice = document.querySelector('.modal-total__price')
+const modalClose = document.querySelector('.modal-close')
 
     const toggleMenu = ()=> header.classList.toggle(classes.opened)
     const scrollToSection = (e)=>{
@@ -124,10 +146,55 @@ const handleScroll =()=>{
     })
 }
 
+const setText = ()=>{
+    const lang = localStorage.getItem('lang') || 'en'
+    const content = languages[lang];
+
+    Object.entries(content).forEach(([key,value])=>{
+        const items = document.querySelectorAll(`[data-text='${key}']`)
+        items.forEach((item) => item.innerText = value)
+    })
+}
+
+const toggleLanguage = ({target})=>{
+    const {lang} = target.dataset;
+    if(!lang) return
+    localStorage.setItem('lang', lang)
+    setText()
+}
+
+const handleBuyButton = ({currentTarget:target})=>{
+    const {value} = target.dataset;
+    if(!value) return;
+    const {price,title} = values[value];
+
+    modalTitle.innerText = title;
+    modalPrice.innerText = `${price}$`
+    modal.classList.add(classes.opened)
+    overlay.classList.add(classes.opened)
+}
+
+
+const closeModal =()=> {
+    modal.classList.remove(classes.opened)
+    overlay.classList.remove(classes.opened)
+}
+
+const closeOverlay =()=> {
+    modal.classList.remove(classes.opened)
+    overlay.classList.remove(classes.opened)
+}
+
 window.addEventListener('scroll', handleScroll)
 initSlider()
+setText()
 videoButton.addEventListener('click',handleVideo)
 menuButton.addEventListener('click',toggleMenu)
 menuLink.forEach((link)=> link.addEventListener('click', scrollToSection))
 checkbox.forEach((box)=> box.addEventListener('click', handleCheckbox))
 faqItem.forEach((item)=>item.addEventListener('click', handleFaqItem))
+language.forEach((lang)=>lang.addEventListener('click', toggleLanguage))
+buyButton.forEach((btn)=>btn.addEventListener('click', handleBuyButton))
+modalClose.addEventListener('click', closeModal)
+overlay.addEventListener('click',closeOverlay)
+

@@ -39,19 +39,19 @@
                             <li><a data-text="editions" class="header-menu__link menu-link" href="#editions">
                                 EDITIONS 
                             </a></li>
-                            <li><a class="header-menu__link menu-link" href="#controller">
+                            <li><a data-text="controller" class="header-menu__link menu-link" href="#controller">
                                 CONTROLLER
                             </a></li>
-                            <li><a class="header-menu__link menu-link" href="#about">
+                            <li><a data-text="about" class="header-menu__link menu-link" href="#about">
                                 ABOUT GAME
                             </a></li>
-                            <li><a class="header-menu__link menu-link" href="#explore">
+                            <li><a data-text="explore" class="header-menu__link menu-link" href="#explore">
                                 EXPLORE
                             </a></li>
-                            <li><a class="header-menu__link menu-link" href="#news">
+                            <li><a data-text="news" class="header-menu__link menu-link" href="#news">
                                 NEWS
                             </a></li>
-                            <li><a class="header-menu__link menu-link" href="#faq">
+                            <li><a data-text="faq" class="header-menu__link menu-link" href="#faq">
                                 FAQ
                             </a></li>
                             <li>
@@ -89,10 +89,10 @@
                       <g></g>
                     </svg>
                     <div class="header-menu__languages">
-                        <div class="header-menu__language">
+                        <div class="header-menu__language  language" data-lang='ru'>
                             Русский
                         </div>
-                        <div class="header-menu__language">
+                        <div class="header-menu__language  language" data-lang='en'>
                             English
                         </div>
                     </div>
@@ -132,7 +132,7 @@
                     <h1>God of War Ragnarök</h1>
                 </div>
                 <div class="dscription-subtitle">Taking place three years following the events of the previous game, Fimbulwinter, a great winter that spans three summers, is drawing to a close which will begin the prophesied Ragnarök.</div>
-                <div class="description-button">
+                <div class="description-button buy-button" data-value="0">
                     buy now
                 </div>
             </div>
@@ -186,7 +186,7 @@
   
                 <div class="editions-item__price" data-value="1">18.99$</div>
   
-                <div class="editions-item__btn buy-button">buy now</div>
+                <div class="editions-item__btn buy-button" data-value="1">buy now</div>
               </div>
   
               <div class="editions-item">
@@ -207,7 +207,7 @@
   
                 <div class="editions-item__price">29.99$</div>
   
-                <div class="editions-item__btn buy-button" data-value="2">
+                <div class="editions-item__btn buy-button" data-value="2" >
                   buy now
                 </div>
               </div>
@@ -326,7 +326,7 @@
                       <li><span class="violet">DEDICATED VIDEO RAM</span>: 6 GB</li>
                     </ul>
 
-                    <div class="explore-button">Buy now</div>
+                    <div class="explore-button buy-button" data-value="2">Buy now</div>
                   </div>
                 </div>
               </div>
@@ -395,7 +395,7 @@
                       </li>
                     </ul>
 
-                    <div class="explore-button">Buy now</div>
+                    <div class="explore-button buy-button" data-value="0">Buy now</div>
                   </div>
                 </div>
               </div>
@@ -658,6 +658,71 @@ hit the network , and a little earlier we learned that the work on the productio
           </div>
         </div>
       </footer>
+
+      <div class="modal">
+        <div class="modal-wrapper">
+          <div class="modal-title">GOD OF RAGNAROK</div>
+          <div class="modal-version"></div>
+
+          <form class="form">
+
+            <div class="form-group full">
+              <label for="card">Credit Card:</label>
+              <input 
+              type="text" 
+              required placeholder="0000 0000 0000 0000" 
+              id="card">
+            </div>
+
+            <div class="form-group">
+              <label for="expire">expire</label>
+              <input 
+              type="text" 
+              required placeholder="mm/yy" 
+              id="expire">
+            </div>
+
+            <div class="form-group">
+              <label for="cvv">cvv</label>
+              <input 
+              type="text" 
+              required placeholder="***" 
+              id="cvv">
+            </div>
+
+            <div class="form-group full">
+              <label for="instant">INSTANT:</label>
+              <input 
+              type="text" 
+              required placeholder="John Doe" 
+              id="instant">
+            </div>
+
+            <div class="form-checkbox flex flex-center">
+              <input type="checkbox" name="agreement" id="agreement" required>
+              <span class="check"></span>
+              <label for="agreement">
+                I agree with the <span class="red">rules</span> of the site
+              </label>
+            </div>
+
+            <div class="modal-description">
+              Download of this product is subject to the PlayStation Network Terms of Service and our Software Usage Terms plus any specific additional conditions applying to this product. If you do not wish to accept these terms, do not download this product. See Terms of Service for more important information.
+            </div>
+
+            <div class="modal-total flex flex-center">
+              <div class="modal-total__text">YOUR TOTAL SUMMA:</div>
+              <div class="modal-total__price"></div>
+            </div>
+
+            <button type="submit" class="modal-submit buy-button" data-value="0">
+              buy NOW
+            </button>
+          </form>
+          <div class="modal-close">х</div>
+        </div>
+      </div>
+    <div class="overlay"></div>
 </body>
 </html>
 
