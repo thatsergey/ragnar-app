@@ -2,12 +2,17 @@ import '../styles/reset.scss'
 import '../styles/mixins.scss'
 import '../styles/styles.scss'
 
+const checkboxes = {
+    requirements: ['minimum', 'recommended'],
+    versions: ['standard', 'limited'],
+}
 const classes = {
     opened: 'opened',
-    hidden: 'hidden'
+    hidden: 'hidden',
+    active: 'active',
 }
 let isPlay = false
- 
+const checkbox = document.querySelectorAll('.checkbox')
 const menuLink = document.querySelectorAll('.menu-link')
 const header = document.querySelector('.header')
 const menuButton = document.querySelector('.header-menu__button');
@@ -68,6 +73,25 @@ const handleVideo = ({target})=>{
     target.innerText = isPlay ? 'Pause' : 'Play' 
     isPlay ? video.play() : video.pause() 
 }
+
+const handleCheckbox = ({currentTarget:{checked, name}})=>{
+    console.log(name)
+const {active} = classes
+const value = checkboxes[name][Number(checked)]
+const list = document.getElementById(value)
+console.log(list)
+const tabs = document.querySelectorAll(`[data-${name}]`)
+const siblings = list.parentElement.children;
+
+for(const item of siblings) item.classList.remove(active)
+for(const tab of tabs){
+    tab.classList.remove(active);
+    tab.dataset[name] === value && tab.classList.add(active)
+}
+list.classList.add(active)
+
+}
 videoButton.addEventListener('click',handleVideo)
 menuButton.addEventListener('click',toggleMenu)
 menuLink.forEach((link)=> link.addEventListener('click', scrollToSection))
+checkbox.forEach((box)=> box.addEventListener('click', handleCheckbox))
