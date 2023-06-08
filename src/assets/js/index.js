@@ -3,12 +3,16 @@ import '../styles/mixins.scss'
 import '../styles/styles.scss'
 
 const classes = {
-    opened: 'opened'
+    opened: 'opened',
+    hidden: 'hidden'
 }
-
+let isPlay = false
+ 
 const menuLink = document.querySelectorAll('.menu-link')
 const header = document.querySelector('.header')
 const menuButton = document.querySelector('.header-menu__button');
+const video = document.getElementById('video')
+const videoButton = document.querySelector('.video-btn')
 
     const toggleMenu = ()=> header.classList.toggle(classes.opened)
     const scrollToSection = (e)=>{
@@ -26,7 +30,8 @@ const menuButton = document.querySelector('.header-menu__button');
             behavior: 'smooth'
         });
     }
-    const formatVslue = (value) => value < 10 ? `0${value}`: value
+
+const formatVslue = (value) => value < 10 ? `0${value}`: value
     
 const getTimer = (diff)=>{
     return{
@@ -55,5 +60,14 @@ const startTimer = (date) => {
     }, 1000);    
 }
 startTimer('Jule 11, 2023 00:00:00')
+
+const handleVideo = ({target})=>{
+    const info = target.parentElement;
+    isPlay = !isPlay
+    info.classList.toggle(classes.hidden, isPlay)
+    target.innerText = isPlay ? 'Pause' : 'Play' 
+    isPlay ? video.play() : video.pause() 
+}
+videoButton.addEventListener('click',handleVideo)
 menuButton.addEventListener('click',toggleMenu)
 menuLink.forEach((link)=> link.addEventListener('click', scrollToSection))
